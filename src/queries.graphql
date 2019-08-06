@@ -1,0 +1,58 @@
+fragment userInfo on User {
+  id
+  nodeId
+  firstName
+  lastName
+}
+
+mutation login($email: String!, $password: String!) {
+  authenticate(input: { email: $email, password: $password }) {
+    jwt
+  }
+}
+
+query profile {
+  currentUser {
+    lastName
+    firstName
+    id
+    nodeId
+  }
+}
+
+query getAllUsers {
+  allUsersList {
+    nodeId
+    firstName
+    lastName
+  }
+}
+
+# mutation addTodo($title: String!, $content: String!) {
+#   createTodo(input: { todo: { title: $title, content: $content } }) {
+#     todo {
+#       ...todoListItem
+#     }
+#   }
+# }
+
+mutation registerUser(
+  $firstName: String!
+  $lastName: String!
+  $email: String!
+  $password: String!
+) {
+  registerUser(
+    input: {
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      password: $password
+    }
+  ) {
+    clientMutationId
+    user {
+      ...userInfo
+    }
+  }
+}

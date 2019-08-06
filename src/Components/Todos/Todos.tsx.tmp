@@ -1,0 +1,45 @@
+import React from 'react';
+import {
+  GetAllTodosComponent,
+  AddTodoComponent,
+} from '../../generated/components';
+
+import { TodoListItem } from './TodoListItem';
+
+export function Todos() {
+  return (
+    <>
+      <GetAllTodosComponent>
+        {({ loading, error, data }) => {
+          if (loading) return <p>Loading...</p>;
+          if (error) return <p>Error :(</p>;
+          if (!data || !data.allTodosList) return <p>No data!</p>;
+          return data.allTodosList.map(props => (
+            <TodoListItem key={props.nodeId} {...props} />
+          ));
+        }}
+      </GetAllTodosComponent>
+      <AddTodoComponent>
+        {addTodo => (
+          <form
+            onSubmit={e => {
+              e.preventDefault();
+              const titleField = document.getElementById(
+                'addtodo-title'
+              ) as HTMLInputElement;
+              if (titleField.value) {
+                addTodo({
+                  variables: { title: titleField.value, content: '' },
+                  refetchQueries: [`getAllTodos`],
+                });
+              }
+            }}
+          >
+            <input id="addtodo-title" type="text" name="title" />
+            <input type="submit" value="Add todo" />
+          </form>
+        )}
+      </AddTodoComponent>
+    </>
+  );
+}

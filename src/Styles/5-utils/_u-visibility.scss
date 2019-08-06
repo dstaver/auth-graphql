@@ -1,0 +1,28 @@
+.u-hidden-desktop {
+  @include breakpoint(medium) {
+    display: none !important;
+  }
+}
+.u-hidden-mobile {
+  @media screen and (max-width: $br-small-max) {
+    display: none !important;
+  }
+}
+
+.u-mobile-only {
+  @include breakpoint(medium) {
+    display: none !important;
+  }
+}
+
+.u-print-only {
+  @media not print {
+    display: none !important;
+  }
+}
+
+.u-screen-only {
+  @media print {
+    display: none !important;
+  }
+}

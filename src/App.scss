@@ -1,0 +1,26 @@
+.app {
+  padding: 1rem;
+  background-color: #fff;
+  height: 100%;
+}
+
+nav {
+  > * {
+    display: inline-block;
+    padding: 1rem 0.5rem;
+  }
+}
+
+form {
+  text-align: left;
+  padding: 1rem;
+  label {
+    display: block;
+    padding-bottom: 1rem;
+
+    input {
+      margin-top: 3px;
+      display: block;
+    }
+  }
+}

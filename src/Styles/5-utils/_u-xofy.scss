@@ -1,0 +1,37 @@
+@for $cols from 1 through 12 {
+  @for $col from 1 through $cols {
+    .u-x#{$col}of#{$cols} {
+      width: 100% / $cols * $col;
+    }
+  }
+}
+
+@include breakpoint(small) {
+  @for $cols from 1 through 12 {
+    @for $col from 1 through $cols {
+      .u-x#{$col}of#{$cols}-small {
+        width: 100% / $cols * $col;
+      }
+    }
+  }
+}
+
+@include breakpoint(medium) {
+  @for $cols from 1 through 12 {
+    @for $col from 1 through $cols {
+      .u-x#{$col}of#{$cols}-medium {
+        width: 100% / $cols * $col;
+      }
+    }
+  }
+}
+
+@include breakpoint(large) {
+  @for $cols from 1 through 12 {
+    @for $col from 1 through $cols {
+      .u-x#{$col}of#{$cols}-large {
+        width: 100% / $cols * $col;
+      }
+    }
+  }
+}

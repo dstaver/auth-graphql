@@ -1,0 +1,18 @@
+app:
+  port: 3131
+
+db:
+  database: jwt-graphile-example
+  host: localhost
+  user: postgres
+  password:
+  port: 5432
+
+graphile:
+  schemas:
+    - test
+    - test_public
+    - test_private
+
+auth:
+  secret: blablablabla

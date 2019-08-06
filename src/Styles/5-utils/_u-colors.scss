@@ -1,0 +1,5 @@
+@each $_name, $_color in $colors {
+  .u-color-#{$_name} {
+    color: $_color !important;
+  }
+}

@@ -1,0 +1,29 @@
+@for $order from 1 through 10 {
+  .u-order#{$order} {
+    order: $order;
+  }
+}
+
+@include breakpoint(small) {
+  @for $order from 1 through 10 {
+    .u-order#{$order}-small {
+      order: $order;
+    }
+  }
+}
+
+@include breakpoint(medium) {
+  @for $order from 1 through 10 {
+    .u-order#{$order}-medium {
+      order: $order;
+    }
+  }
+}
+
+@include breakpoint(large) {
+  @for $order from 1 through 10 {
+    .u-order#{$order}-large {
+      order: $order;
+    }
+  }
+}

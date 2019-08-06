@@ -1,0 +1,81 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "plugins": ["@typescript-eslint", "react", "import", "prettier"],
+  "extends": [
+    "react-app",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "prettier",
+    "prettier/react",
+    "prettier/@typescript-eslint"
+  ],
+  "overrides": [
+    {
+      "files": ["server.js"],
+      "parserOptions": {
+        "sourceType": "script"
+      },
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ],
+  "rules": {
+    "import/no-unresolved": "error",
+    "import/named": "off",
+    "prettier/prettier": "error",
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
+    "no-unused-vars": "off",
+    "no-use-before-define": [
+      "error",
+      {
+        "functions": false
+      }
+    ],
+    "no-useless-constructor": "off",
+    "prefer-template": "error",
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      {
+        "functions": false
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "args": "none"
+      }
+    ],
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-triple-slash-reference": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/camelcase": "off"
+  },
+  "globals": {
+    "google": true
+  }
+}

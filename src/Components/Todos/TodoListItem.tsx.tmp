@@ -1,0 +1,38 @@
+import React from 'react';
+import {
+  EditTodoComponent,
+  TodoListItemFragment,
+} from '../../generated/components';
+
+export const TodoListItem = ({
+  nodeId,
+  title,
+  content,
+  completed,
+}: TodoListItemFragment) => (
+  <EditTodoComponent key={nodeId}>
+    {(editTodo, { loading, error }) => (
+      <form
+        onSubmit={e => {
+          const formData = new FormData(e.currentTarget);
+          return editTodo({
+            variables: {
+              nodeId,
+              title: String(formData.get('title')),
+              content: String(formData.get('content')),
+              completed: !!formData.get('completed'),
+            },
+            refetchQueries: ['getAllTodos'],
+          });
+        }}
+        className="u-bg-white u-mas u-pam"
+      >
+        <input type="hidden" name="nodeId" value={nodeId} />
+        <input type="checkbox" defaultChecked={completed} />
+        <input name="title" type="text" defaultValue={title} />
+        <input name="content" type="text" defaultValue={content || ''} />
+        <input type="submit" value="Save" />
+      </form>
+    )}
+  </EditTodoComponent>
+);

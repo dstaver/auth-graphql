@@ -1,0 +1,135 @@
+$colors: (
+  porter-light-blue: #81d0d9,
+  porter-blue: #00b6bc,
+  porter-dark-blue: #00b4bb,
+  porter-darker-blue: #0b6574,
+  red: #dd6c62,
+  black: black,
+  tr-odd: #f8f8f8,
+  tr-even: #ffffff,
+  very-dark-grey: #282831,
+  dark-grey: #353535,
+  grey: #707070,
+  medium-grey: #979797,
+  light-grey: #c4c4c4,
+  very-light-grey: #e6e6e6,
+  white: white,
+  text: #353535,
+  yellow: #ffe200,
+  green: #55ab6d,
+);
+
+@function getcolor($name) {
+  @return map-get($colors, $name);
+}
+
+@function strip-unit($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@function rem($fontsize) {
+  @return unquote(strip-units($fontsize) / strip-units($basefontsize) + 'rem');
+}
+
+//grid
+$grid-gutter-width: 0.5rem;
+$enable-rounded: true;
+$enable-shadows: false;
+$enable-transitions: true;
+$enable-hover-media-query: false;
+
+// Components
+$footer-height: 200px;
+$navbar-height: 80px;
+$navbar-mobile-height: 60px;
+$border-width: 1px;
+$border-radius: 0.25rem;
+
+// Table
+$table-odd-row-color: lighten(getcolor(very-light-grey), 7%);
+$table-odd-row-hover-color: darken($table-odd-row-color, 2%);
+$table-even-row-color: white;
+$table-even-row-hover-color: darken($table-even-row-color, 2%);
+
+// Fonts
+$font-color: getcolor(font-color);
+$font-family-sans-serif: 'Open Sans', -apple-system, BlinkMacSystemFont,
+  'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol';
+$font-family-monospace: 'SFMono-Regular', Menlo, Monaco, Consolas,
+  'Liberation Mono', 'Courier New', monospace;
+$font-family-base: $font-family-sans-serif;
+$basefontsize: 16px; // Assumes the browser default, typically `16px`
+$font-weight-light: 300;
+$font-weight-normal: normal;
+$font-weight-bold: bold;
+$font-weight-base: 400;
+$font-weight-normal: 400;
+$headerweight: 700;
+
+// Buttons
+$input-btn-padding-y: 0.5rem;
+$input-btn-padding-x: 0.75rem;
+$input-btn-line-height: 1.25;
+$btn-block-spacing-y: 0.5rem;
+$btn-font-weight: $font-weight-normal;
+
+// Allows for customizing button radius independently from global border radius
+$btn-border-radius: $border-radius;
+$btn-focus-box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+$btn-active-box-shadow: inset 0 3px 5px rgba(getcolor(black), 0.125);
+$btn-transition: background-color 0.15s ease-in-out,
+  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+// Forms
+$input-btn-border-width: $border-width; // For form controls and buttons
+
+// Page sizes
+$min-width: 320px;
+$max-width: 1000px;
+$page-padding: 10px;
+$gutter: 5px;
+$content-padding: ($page-padding + $basefontsize);
+$content-width: calc(100% - (#{$content-padding} * 2));
+
+// Breakpoints
+$br-default-max: 414px;
+$br-small-min: 415px;
+$br-small-max: 767px;
+$br-medium-min: 768px;
+$br-medium-max: 1024px;
+$br-large-min: 1025px;
+$vw-full: 100;
+$vw-full-max: strip-unit($max-width);
+
+$col-widths: (
+  full: (
+    $vw-full,
+  ),
+  threequarters: (
+    ($vw-full / 4) * 3,
+  ),
+  twothirds: (
+    $vw-full / 3 * 2,
+  ),
+  half: (
+    $vw-full / 2,
+  ),
+  onethird: (
+    $vw-full / 3,
+  ),
+  quarter: (
+    $vw-full / 4,
+  ),
+);
+
+$min-breakpoints: (
+  small: $br-small-min,
+  medium: $br-medium-min,
+  large: $br-large-min,
+);
+
+$max-breakpoints: (
+  small: $br-small-max,
+  medium: $br-medium-max,
+);

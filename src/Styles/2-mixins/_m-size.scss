@@ -1,0 +1,11 @@
+@mixin m-size($name) {
+  $width: map-get($col-widths, $name);
+  width: percentage($width / 100);
+  font-size: $width / 100 * 1em;
+}
+
+@mixin m-base($name) {
+  $width: map-get($col-widths, $name);
+  width: percentage($width / 100);
+  font-size: $width / 100 * 1vw;
+}

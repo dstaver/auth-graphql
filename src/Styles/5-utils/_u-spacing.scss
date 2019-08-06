@@ -1,0 +1,38 @@
+.u-lineheight-double {
+  line-height: 200%;
+}
+$_types: (
+  p: padding,
+  m: margin,
+);
+
+$_directions: (
+  t: -top,
+  b: -bottom,
+  l: -left,
+  r: -right,
+  h: -left -right,
+  v: -top -bottom,
+  a: '',
+);
+
+$_sizes: (
+  n: 0,
+  s: 0.5rem,
+  m: 1rem,
+  l: 2rem,
+  p: $page-padding,
+  g: $gutter,
+);
+
+@each $_typeKey, $_typeVal in $_types {
+  @each $_dirKey, $_dirVal in $_directions {
+    @each $_sizeKey, $_sizeVal in $_sizes {
+      .u-#{$_typeKey}#{$_dirKey}#{$_sizeKey} {
+        @each $_dir in $_dirVal {
+          #{$_typeVal}#{$_dir}: #{$_sizeVal} !important;
+        }
+      }
+    }
+  }
+}

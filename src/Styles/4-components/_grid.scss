@@ -1,0 +1,95 @@
+// Grid
+//
+// Fluid grid system
+//
+// Style guide: Grid
+//
+// Weight: 40
+
+.grid {
+  $_prefix: 'grid';
+
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 1 0 auto;
+  text-align: left;
+
+  &--columns {
+    flex-direction: column;
+  }
+
+  &--nowrap {
+    flex-wrap: nowrap;
+  }
+
+  &--align-top {
+    align-items: flex-start;
+  }
+
+  &--align-self-top {
+    align-self: flex-start;
+  }
+
+  &__col {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+
+    &--rigid {
+      flex: 0 0 auto;
+    }
+
+    &--grow {
+      flex-grow: 1;
+    }
+
+    &--noshrink {
+      flex-shrink: 0;
+    }
+
+    &--nogrow {
+      flex-grow: 0;
+    }
+
+    &--gutter {
+      padding: $grid-gutter-width;
+    }
+
+    &--column {
+      flex-direction: column;
+    }
+
+    &--nowrap {
+      flex-wrap: nowrap;
+    }
+
+    &--block {
+      display: block;
+    }
+  }
+
+  // Add gutters between columns 1rem on the grid element + 1rem on each column == 2rem gutter
+  &.has-gutter {
+    width: calc(100% + #{$grid-gutter-width} * 2);
+    padding: 0;
+    margin-left: -$grid-gutter-width;
+
+    // 1 rem on each column
+    .#{$_prefix}__col {
+      padding: $grid-gutter-width;
+
+      &--bleed {
+        padding: 0;
+      }
+    }
+
+    // Prevent double gutters when a gutter grid is nested inside another
+    .#{$_prefix}.has-gutter {
+      padding: 0;
+    }
+  }
+}
